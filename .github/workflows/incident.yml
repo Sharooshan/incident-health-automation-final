@@ -8,17 +8,9 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Show Current Directory
-        run: pwd
-
-      - name: List Files
-        run: ls -la
+      - uses: actions/checkout@v4
 
       - name: Run Automation
         run: |
           chmod +x incident_automation.sh
           ./incident_automation.sh
-`

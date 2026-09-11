@@ -1,0 +1,30 @@
+---
+- name: Linux Health Check
+  hosts: ubuntu
+  become: yes
+
+  tasks:
+
+    - name: Check disk usage
+      command: df -h
+      register: disk
+
+    - name: Show disk usage
+      debug:
+        var: disk.stdout_lines
+
+    - name: Check memory
+      command: free -m
+      register: memory
+
+    - name: Show memory
+      debug:
+        var: memory.stdout_lines
+
+    - name: Check uptime
+      command: uptime
+      register: uptime
+
+    - name: Show uptime
+      debug:
+        var: uptime.stdout
